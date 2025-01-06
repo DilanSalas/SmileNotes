@@ -1,58 +1,69 @@
+import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { SideBarItem } from './';
 
-import {
-  Box,
-  Divider,
-  Drawer,
-  Toolbar,
-  Typography,
-  List,
-} from "@mui/material";
-import { useSelector } from "react-redux";
-import { SideBarItem } from "./SideBarItem";
+export const SideBar = ({ drawerWidth = 340, mobileOpen = false, handleDrawerToggle }) => {
+    const { displayName } = useSelector(state => state.auth);
+    const { notes } = useSelector(state => state.journal);
 
-export const SideBar = ({ drawerWidth = 240 }) => {
+    const drawer = (
+        <>
+            <Toolbar>
+                <Typography variant='h6' noWrap component='div'>
+                    { displayName }
+                </Typography>
+            </Toolbar>
+            <Divider />
 
-  const {displayName} = useSelector((state) => state.auth);
+            <List>
+                {
+                    notes.map(note => (
+                        <SideBarItem key={ note.id } { ...note } />
+                    ))
+                }
+            </List>
+        </>
+    );
 
-  const {notes} = useSelector((state) => state.journal);  
-  return (
-    <Box
-      component={"nav"}
-      sx={{
-        width: { sm: drawerWidth },
-        flexShrink: { sm: 0 },
-        whiteSpace: "nowrap",
-      }}
-    >
-      <Drawer
-        variant="permanent"
-        open
-        sx={{
-          display: { xs: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-          },
-        }}
-      >
+    return (
+        <Box
+            component='nav'
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+            className="animate__animated animate__fadeIn animate__faster"
+        >
+            {/* Mobile drawer */}
+            <Drawer
+                variant="temporary"
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile
+                }}
+                sx={{
+                    display: { xs: 'block', sm: 'none' },
+                    '& .MuiDrawer-paper': { 
+                        boxSizing: 'border-box',
+                        width: drawerWidth 
+                    }
+                }}
+            >
+                {drawer}
+            </Drawer>
 
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            {displayName}
-          </Typography>
-        </Toolbar>
-
-        <Divider />
-
-        <List>
-          {
-          notes.map((note) => (
-            <SideBarItem key={note.id} {...note} />
-
-          ))}
-        </List>
-      </Drawer>
-    </Box>
-  );
+            {/* Desktop drawer */}
+            <Drawer
+                variant="permanent"
+                sx={{
+                    display: { xs: 'none', sm: 'block' },
+                    '& .MuiDrawer-paper': { 
+                        boxSizing: 'border-box',
+                        width: drawerWidth 
+                    }
+                }}
+                open
+            >
+                {drawer}
+            </Drawer>
+        </Box>
+    );
 };
-
