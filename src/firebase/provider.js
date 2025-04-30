@@ -5,7 +5,7 @@ const googleProvider = new GoogleAuthProvider();
 
 export const singInWithGoogle = async () => {
     try {
-        const result = await signInWithRedirect(FirebaseAuth, googleProvider);
+        const result = await signInWithPopup(FirebaseAuth, googleProvider);
 
         const { displayName, email, photoURL, uid } = result.user; 
 
