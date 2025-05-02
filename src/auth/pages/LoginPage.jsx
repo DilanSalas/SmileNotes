@@ -3,7 +3,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { Link as RouterLink } from "react-router-dom";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
-import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
+import { checkingAuthentication , startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useMemo } from "react";
