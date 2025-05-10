@@ -1,21 +1,28 @@
 import {
-    AppBar,
-    Toolbar,
-    Typography,
-    Button,
-    Box,
-    IconButton,
-    Container,
-  } from "@mui/material"
-  import {
-    Brightness4 as DarkIcon,
-    Brightness7 as LightIcon,
-    AutoAwesome as SparklesIcon,
-    ArrowForward as ArrowIcon,
-  } from "@mui/icons-material"
-  import '../styles/styles.css'
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  IconButton,
+  Container,
+} from "@mui/material"
+import {
+  Brightness4 as DarkIcon,
+  Brightness7 as LightIcon,
+  AutoAwesome as SparklesIcon,
+  ArrowForward as ArrowIcon,
+} from "@mui/icons-material"
+import { useNavigate } from 'react-router-dom'  // Importa useNavigate
+
+export const Navbar = ({ isDark, toggleTheme }) => {
+  const navigate = useNavigate()  // Crea la función navigate
   
-  export const Navbar = ({ isDark, toggleTheme }) => (
+  const handleStartClick = () => {
+    navigate('/auth')  // Redirige a la ruta /auth
+  }
+
+  return (
     <AppBar position="sticky" color="inherit" elevation={0} className="app-bar">
       <Container maxWidth="xl">
         <Toolbar disableGutters className="toolbar">
@@ -43,7 +50,12 @@ import {
             <IconButton onClick={toggleTheme} color="inherit" className="theme-toggle">
               {isDark ? <LightIcon /> : <DarkIcon />}
             </IconButton>
-            <Button variant="contained" className="cta-button" endIcon={<ArrowIcon />}>
+            <Button
+              variant="contained"
+              className="cta-button"
+              endIcon={<ArrowIcon />}
+              onClick={handleStartClick}  // Agrega el manejador de clic aquí
+            >
               Comenzar
             </Button>
           </Box>
@@ -51,4 +63,4 @@ import {
       </Container>
     </AppBar>
   )
-  
+}

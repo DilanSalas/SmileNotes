@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material"
-import '../styles/styles.css'
+
 export const ThemeProviderWrapper = ({ children }) => {
   const [theme, setTheme] = useState("light")
   const [mounted, setMounted] = useState(false)

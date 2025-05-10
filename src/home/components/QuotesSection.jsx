@@ -1,6 +1,5 @@
 import { Container, Grid, Typography } from "@mui/material"
 import { QuoteCard } from "./QuotesCard.jsx"
-import '../styles/styles.css'
 
 const quotes = [
   {

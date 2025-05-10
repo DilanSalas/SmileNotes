@@ -16,6 +16,7 @@ export const singInWithGoogle = async () => {
             photoURL,
             uid,
         };
+
     } catch (error) {
         console.log(error);
 
@@ -71,6 +72,8 @@ export const loginWithEmailPassword = async ({ email, password }) => {
             photoURL,
             uid,
         };
+
+        console.log(result);
     } catch (error) {
 
         return {

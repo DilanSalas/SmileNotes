@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material"
-import '../styles/styles.css'
+
 export const HeroSection = () => (
   <section className="hero-section">
     <div className="hero-background"></div>

@@ -1,28 +1,37 @@
-import { StarOutline } from "@mui/icons-material"
-import { Grid, Typography } from "@mui/material"
+// NothingSelectedView.jsx
+import { StarOutline } from "@mui/icons-material";
+import { Grid, Typography, Box } from "@mui/material";
 
 export const NothingSelectedView = () => {
   return (
-    <Grid
-     className="animate__animated animate__fadeIn animate__faster"
-    container
-    spacing={0}
-    direction="column"
-    alignItems="center"
-    justifyContent="center"
-    sx={{
-      minHeight: "calc(100vh - 110px)",
-      backgroundColor: "primary.main",
-      borderRadius: 2,
-    }}
-  >
+    <Box
+      className="hero-section animate__animated animate__fadeIn animate__faster"
+      sx={{ minHeight: "calc(100vh - 110px)" }}
+    >
+      <Box className="hero-background" />
+      <Box className="hero-container">
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          className="hero-content"
+          sx={{ minHeight: "100%" }}
+        >
+          <Grid item>
+            <StarOutline
+              className="logo-icon"
+              sx={{ fontSize: "12rem !important" }}
+            />
+          </Grid>
+          <Grid item>
+            <Typography component="div" className="hero-title">
+              Selecciona una opción
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+    </Box>
+  );
+};
 
-        <Grid item xs={12}>
-            <StarOutline sx={{fontSize: 100, color: 'white'}}/>
-        </Grid> 
-        <Grid item xs={12}>
-            <Typography color="white" variant="h5"> Selecciona una opción </Typography>
-        </Grid> 
-    </Grid>
-  )
-}

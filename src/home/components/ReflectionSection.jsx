@@ -4,7 +4,7 @@ import {
     Box,
     Container,
   } from "@mui/material"
-  import '../styles/styles.css'
+
   
   const ReflectionSection = () => {
     return (

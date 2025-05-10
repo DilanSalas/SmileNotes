@@ -10,19 +10,27 @@ import { useMemo } from "react";
 const formData = { email: "", password: "" };
 
 export const LoginPage = () => {
-  const { status, errorMessage } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  const { email, password, onInputChange } = useForm(formData);
-  const isAuthenticated = useMemo(() => status === "checking", [status]);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(startLoginWithEmailPassword({ email, password }));
-  };
+  const {status, errorMessage} = useSelector((state) => state.auth);
+ 
+   const dispatch = useDispatch();
 
-  const onGoogleSignIn = () => {
-    dispatch(startGoogleSignIn());
-  };
+    const { email, password, onInputChange } = useForm(formData);
+
+    const isAuthenticated = useMemo(() => {
+      return status === 'checking';
+    }, [status]);
+
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+      dispatch(startLoginWithEmailPassword({email, password}));
+    };
+
+    const onGoogleSignIn = () => {
+      console.log("onGoogleSignIn");
+      dispatch(startGoogleSignIn());
+    };
 
   return (
     <AuthLayout title="Iniciar Sesión">

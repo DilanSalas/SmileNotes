@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography, Box } from "@mui/material"
 import { Favorite as HeartIcon } from "@mui/icons-material"
-import '../styles/styles.css'
+
 export const QuoteCard = ({ quote, author, gradient }) => (
   <Card className="quote-card">
     <div className="card-accent" style={{ background: gradient }}></div>
