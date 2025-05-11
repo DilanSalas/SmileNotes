@@ -26,7 +26,7 @@ export const HeroSection = () => (
         <Grid item xs={12} lg={6}>
           <Box className="hero-image-container">
             <img
-              src="https://via.placeholder.com/500"
+              src="/HomeIMG.png"
               alt="Ilustración de salud mental"
               className="hero-image"
             />

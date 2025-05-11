@@ -64,7 +64,7 @@ import {
                 <Box className="fade-up">
                   <Box className="image-wrapper image-wrapper3">
                     <img
-                      src="https://via.placeholder.com/420x280"
+                      src="/Frase1IMG.png"
                       alt="Imagen de reflexión"
                       className="reflection-image"
                     />
@@ -80,17 +80,16 @@ import {
                 </Box>
               </Grid>
   
-              {/* Image 4 - Wide bottom */}
               <Grid item xs={12} className="reflection-grid-item reflection-grid-item-wide">
                 <Box className="fade-up">
                   <Box className="image-wrapper image-wrapper4">
                     <img
-                      src="https://via.placeholder.com/1200x220"
+                      src="/Frase2IMG.png"
                       alt="Imagen de reflexión panorámica"
                       className="reflection-image"
                     />
                     <Box className="image-overlay">
-                      <Typography variant="body1" className="image-caption">
+                      <Typography variant="body1" className="image-caption ">
                         El horizonte siempre está a la vista, solo necesitas levantar la mirada
                       </Typography>
                     </Box>

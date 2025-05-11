@@ -29,7 +29,7 @@ export const Navbar = ({ isDark, toggleTheme }) => {
           <Box className="logo-container">
             <SparklesIcon className="logo-icon" />
             <Typography variant="h5" component="span" className="logo-text">
-              Smile Notes
+              SmileNotes
             </Typography>
           </Box>
           <Box

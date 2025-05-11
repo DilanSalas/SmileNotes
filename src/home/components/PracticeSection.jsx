@@ -45,7 +45,7 @@ import {
             </Grid>
             <Grid item xs={12} lg={6}>
               <Box className="practice-image-container">
-                <img src="https://via.placeholder.com/500" alt="Práctica diaria" className="practice-image" />
+                <img src="/PracticaIMG.png" alt="Práctica diaria" className="practice-image" />
               </Box>
             </Grid>
           </Grid>
