@@ -13,5 +13,6 @@ RUN yarn build
 # Expone el puerto que Vite usa por defecto para preview
 EXPOSE 4173
 
+
 # Usa el preview como servidor (modo producción)
 CMD ["yarn", "preview", "--host"]
