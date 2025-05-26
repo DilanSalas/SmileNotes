@@ -1,18 +1,27 @@
-FROM node:18-alpine
+# 1) Build: compila tu app con Vite
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 COPY . .
-
-# Compila la app para producción
 RUN yarn build
 
-# Expone el puerto que Vite usa por defecto para preview
+# 2) Production: sirve los estáticos con 'serve'
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+# Instalamos únicamente el paquete 'serve' de forma global
+RUN yarn global add serve
+
+# Copiamos la carpeta 'dist' desde el builder
+COPY --from=builder /app/dist ./dist
+
+# Exponemos el mismo puerto
 EXPOSE 4173
 
-
-# Usa el preview como servidor (modo producción)
-CMD ["yarn", "preview", "--host"]
+# Arrancamos en modo producción, sirviendo sólo estáticos
+CMD ["serve", "-s", "dist", "-l", "4173"]
