@@ -3,6 +3,7 @@ import { JournalRoutes } from "../journal/routes/JournalRoutes"
 import { AuthRoutes } from "../auth/routes/AuthRoutes"
 import { CheckingAuth } from "../ui/components/CheckingAuth"
 import { useCheckout } from "../hooks/"
+import { HomeRoutes } from "../home/routes/HomeRoutes"
 
 export const AppRouter = () => {
 
@@ -23,7 +24,7 @@ export const AppRouter = () => {
       
     }
 
-    <Route path="/*" element={<Navigate to="/auth/login"  />} />
+    <Route path="/*" element={<HomeRoutes/>} />
 
 
     <Route/>
