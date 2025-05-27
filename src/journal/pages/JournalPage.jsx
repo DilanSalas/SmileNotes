@@ -17,7 +17,9 @@ export const JournalPage = () => {
       
   }
 
-  const { isSaving , active} = useSelector((state) => state.journal);
+  
+
+  const { isCreatingNote, isSaving , active} = useSelector((state) => state.journal);
 
   return (
       <JournalLayout>
@@ -31,7 +33,7 @@ export const JournalPage = () => {
         }
 
         <IconButton
-        disabled={isSaving}
+        disabled={isCreatingNote}
         onClick={onClickNewNote}
         size="large"
         sx={{
