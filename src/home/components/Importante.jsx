@@ -75,7 +75,7 @@ const ProjectOverview = () => (
           color: "transparent"
         }}
       >
-        ¿Qué es Smile Notes?
+        ¿Qué es SmileNotes?
       </Typography>
 
       <Typography
@@ -92,7 +92,7 @@ const ProjectOverview = () => (
           boxShadow: "0 10px 25px rgba(0,0,0,0.1)"
         }}
       >
-        Smile Notes es una plataforma digital diseñada para mejorar el bienestar emocional de las personas a través del registro de momentos positivos y reflexiones diarias. Nació como respuesta a la creciente necesidad de herramientas accesibles de autocuidado mental en Puntarenas, donde el estrés, la ansiedad y la depresión afectan a gran parte de la población.
+        SmileNotes es una plataforma digital diseñada para mejorar el bienestar emocional de las personas a través del registro de momentos positivos y reflexiones diarias. Nació como respuesta a la creciente necesidad de herramientas accesibles de autocuidado mental en Puntarenas, donde el estrés, la ansiedad y la depresión afectan a gran parte de la población.
         <br /><br />
         A diferencia de redes sociales, Smile Notes es un espacio privado, seguro y libre de juicios. Permite a los usuarios escribir notas personales acompañadas de imágenes, con el fin de reforzar su autoestima, fomentar la gratitud y construir una narrativa positiva sobre sus vidas.
         <br /><br />
@@ -120,7 +120,7 @@ export default function SmileNotesInfoSection() {
             color: "transparent"
           }}
         >
-          ¿Cómo Smile Notes puede ayudarte?
+          ¿Cómo SmileNotes puede ayudarte?
         </Typography>
 
         <Grid container spacing={4} justifyContent="center">
