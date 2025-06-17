@@ -16,23 +16,23 @@ import {
   
           <Box className="reflection-container">
             {/* Scattered images in an organic layout */}
-            <Grid container spacing={4} className="reflection-grid">
+            <Grid container spacing={7} className="reflection-grid">
               {/* Image 1 - Large left */}
               <Grid item xs={12} md={7} className="reflection-grid-item">
                 <Box className="fade-right">
                   <Box className="image-wrapper image-wrapper1">
                     <img
-                      src="https://via.placeholder.com/600x350"
+                      src="/Imagen706.png"
                       alt="Imagen de reflexión"
                       className="reflection-image"
                     />
-                    <Box className="image-overlay">
-                      <Typography variant="body1" className="image-caption">
+                    <Box className="image-overlay" sx={{ paddingTop: "8px" }}>
+                      <Typography variant="body1" className="image-caption" sx={{ marginTop: "4px" }}>
                         La calma es el lenguaje de la mente
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="body2" className="image-description">
+                  <Typography variant="body2" className="image-description" sx={{ marginTop: "12px" }}>
                     Tómate un momento para respirar y encontrar paz en medio del caos diario.
                   </Typography>
                 </Box>
@@ -43,17 +43,17 @@ import {
                 <Box className="fade-left">
                   <Box className="image-wrapper image-wrapper2">
                     <img
-                      src="https://via.placeholder.com/400x250"
+                      src="/Imagen707.jpg"
                       alt="Imagen de reflexión"
                       className="reflection-image"
                     />
-                    <Box className="image-overlay">
-                      <Typography variant="body1" className="image-caption">
+                    <Box className="image-overlay" sx={{ paddingTop: "8px" }}>
+                      <Typography variant="body1" className="image-caption" sx={{ marginTop: "4px" }}>
                         Cada paso cuenta en tu camino
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="body2" className="image-description">
+                  <Typography variant="body2" className="image-description" sx={{ marginTop: "12px" }}>
                     Los pequeños avances diarios se convierten en grandes transformaciones.
                   </Typography>
                 </Box>
@@ -68,13 +68,13 @@ import {
                       alt="Imagen de reflexión"
                       className="reflection-image"
                     />
-                    <Box className="image-overlay">
-                      <Typography variant="body1" className="image-caption">
+                    <Box className="image-overlay" sx={{ paddingTop: "8px" }}>
+                      <Typography variant="body1" className="image-caption" sx={{ marginTop: "4px" }}>
                         Encuentra belleza en lo simple
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="body2" className="image-description">
+                  <Typography variant="body2" className="image-description" sx={{ marginTop: "12px" }}>
                     Las pequeñas cosas de la vida suelen ser las más significativas.
                   </Typography>
                 </Box>
@@ -88,13 +88,13 @@ import {
                       alt="Imagen de reflexión panorámica"
                       className="reflection-image"
                     />
-                    <Box className="image-overlay">
-                      <Typography variant="body1" className="image-caption ">
+                    <Box className="image-overlay" sx={{ paddingTop: "8px" }}>
+                      <Typography variant="body1" className="image-caption" sx={{ marginTop: "4px" }}>
                         El horizonte siempre está a la vista, solo necesitas levantar la mirada
                       </Typography>
                     </Box>
                   </Box>
-                  <Typography variant="body2" className="image-description">
+                  <Typography variant="body2" className="image-description" sx={{ marginTop: "12px" }}>
                     Cuando te sientas perdido, recuerda que siempre hay nuevas perspectivas por descubrir.
                   </Typography>
                 </Box>
