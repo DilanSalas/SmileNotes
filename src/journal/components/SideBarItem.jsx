@@ -2,11 +2,11 @@ import { ListItem, ListItemText, ListItemButton, Typography } from '@mui/materia
 import { useDispatch } from 'react-redux';
 import { setActiveNote } from '../../store/journal';
 
-export const SideBarItem = ({ title = '', body, id, date }) => {
+export const SideBarItem = ({ title = '', body, id, date, imageUrls = [] }) => {
   const dispatch = useDispatch();
 
   const onClickNote = () => {
-    dispatch(setActiveNote({ title, body, id, date }));
+    dispatch(setActiveNote({ title, body, id, date, imageUrls }));
   };
 
   // Formato bonito de fecha
