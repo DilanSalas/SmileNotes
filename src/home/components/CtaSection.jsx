@@ -17,9 +17,9 @@ import {
               Smile Notes está aquí para acompañarte en cada paso de tu camino hacia una mente más saludable y
               feliz.
             </Typography>
-            <Button variant="contained" size="large" className="cta-button-large">
+            {/* <Button variant="contained" size="large" className="cta-button-large">
               Comenzar ahora
-            </Button>
+            </Button> */}
           </Box>
         </Container>
       </section>

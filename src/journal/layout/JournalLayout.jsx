@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react';
 import { Box, CssBaseline, ThemeProvider, Toolbar, createTheme } from '@mui/material';
 import { NavBar, SideBar } from '../components';
 
-const drawerWidth = 340;
+const drawerWidth = 400;
 
 export const JournalLayout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  // 🌗 Control del modo claro/oscuro
   const [themeMode, setThemeMode] = useState('dark');
 
   useEffect(() => {

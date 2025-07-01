@@ -14,12 +14,12 @@ export const HeroSection = () => (
               Descubre cómo pequeñas reflexiones diarias pueden transformar tu bienestar mental y emocional.
             </Typography>
             <Box className="button-group">
-              <Button variant="contained" size="large" className="primary-button">
+              {/* <Button variant="contained" size="large" className="primary-button">
                 Comenzar ahora
               </Button>
               <Button variant="outlined" size="large" className="secondary-button">
                 Saber más
-              </Button>
+              </Button> */}
             </Box>
           </Box>
         </Grid>

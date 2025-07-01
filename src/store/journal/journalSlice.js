@@ -18,11 +18,11 @@ export const journalSlice = createSlice({
     },
     reducers: {
         savingNewNote: ( state ) => {
-            state.isCreatingNote = false;
+            state.isCreatingNote = true; // Asegúrate de que esto sea true, no false
         },
         addNewEmptyNote: (state, action ) => {
             state.notes.push( action.payload );
-            state.isCreatingNote = true;
+            state.isCreatingNote = false; // Aquí lo pones en false
         },
         setActiveNote: (state, action ) => {
             state.active = action.payload;

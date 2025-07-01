@@ -8,7 +8,7 @@ import { fileUpload, loadNotes } from '../../helpers';
 export const startNewNote = () => {
     return async( dispatch, getState ) => {
 
-        dispatch( savingNewNote() );
+        dispatch( savingNewNote() ); // Esto debería deshabilitar inmediatamente
 
         const { uid } = getState().auth;
 
@@ -19,13 +19,17 @@ export const startNewNote = () => {
             date: new Date().getTime(),
         }
 
-        const newDoc = doc( collection( FirebaseFirestore, `${ uid }/journal/notes`) );
-        await setDoc( newDoc, newNote );
+        try {
+            const newDoc = doc( collection( FirebaseFirestore, `${ uid }/journal/notes`) );
+            await setDoc( newDoc, newNote );
 
-        newNote.id = newDoc.id;  
-        
-         dispatch( addNewEmptyNote( newNote ) );
-        dispatch( setActiveNote( newNote ) );
+            newNote.id = newDoc.id;  
+
+            dispatch( addNewEmptyNote( newNote ) );
+            dispatch( setActiveNote( newNote ) );
+        } catch (error) {
+            console.error('Error creando nota:', error);
+        }
 
     }
 }

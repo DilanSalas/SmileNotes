@@ -39,9 +39,9 @@ import {
                   </ListItem>
                 ))}
               </List>
-              <Button variant="contained" className="practice-button">
+              {/* <Button variant="contained" className="practice-button">
                 Comenzar mi práctica
-              </Button>
+              </Button> */}
             </Grid>
             <Grid item xs={12} lg={6}>
               <Box className="practice-image-container">

@@ -4,7 +4,6 @@ import { SideBarItem } from './';
 import { WbSunny, NightlightRound } from '@mui/icons-material';
 import { useState } from 'react';
 
-
 export const SideBar = ({ drawerWidth = 340, mobileOpen = false, handleDrawerToggle, toggleTheme }) => {
   const { displayName } = useSelector(state => state.auth);
   const { notes } = useSelector(state => state.journal);
@@ -26,11 +25,18 @@ export const SideBar = ({ drawerWidth = 340, mobileOpen = false, handleDrawerTog
     );
 
   const drawer = (
-    <>
+    <Box 
+      sx={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        height: '100vh' // Altura fija de la ventana
+      }}
+    >
       <Toolbar
         sx={{
           padding: '0.75rem 1.5rem',
           borderBottom: `1px solid ${isDarkMode ? 'var(--border-color, #1e293b)' : 'var(--border-color, #e2e8f0)'}`,
+          flexShrink: 0, // No se reduce
         }}
         className="logo-container"
       >
@@ -90,12 +96,81 @@ export const SideBar = ({ drawerWidth = 340, mobileOpen = false, handleDrawerTog
         </Box>
       </Toolbar>
 
+      {/* Controles de filtro */}
+      <Box 
+        sx={{ 
+          padding: '1rem',
+          flexShrink: 0, // No se reduce
+          borderBottom: `1px solid ${isDarkMode ? 'var(--border-color, #1e293b)' : 'var(--border-color, #e2e8f0)'}`,
+        }}
+      >
+        <Box sx={{ display: 'flex', gap: 1, flexDirection: 'column' }}>
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <button
+              onClick={() => {
+                setSearchDate('');
+                setSortNewestFirst(true);
+              }}
+              style={{
+                fontFamily: 'Quicksand',
+                background: '#ec4899',
+                color: 'white',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: '0.3s',
+                fontSize: '0.75rem',
+              }}
+            >
+              🔄
+            </button>
+
+            <input
+              type="date"
+              value={searchDate}
+              onChange={(e) => setSearchDate(e.target.value)}
+              style={{
+                fontFamily: 'Quicksand',
+                padding: '0.5rem',
+                borderRadius: '0.5rem',
+                border: '1px solid #ccc',
+                background: isDarkMode ? '#1e293b' : '#fff',
+                color: isDarkMode ? '#f8fafc' : '#0f172a',
+                flex: 1,
+                fontSize: '0.75rem',
+              }}
+            />
+            
+            <button
+              onClick={() => setSortNewestFirst(!sortNewestFirst)}
+              style={{
+                fontFamily: 'Quicksand',
+                background: '#8b5cf6',
+                color: 'white',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '0.5rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: '0.3s',
+                fontSize: '0.75rem',
+              }}
+            >
+              {sortNewestFirst ? '🔽' : '🔼'}
+            </button>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Lista de notas - flexible y sin scroll */}
       <Box
         sx={{
-          overflow: 'auto',
+          flex: 1, // Toma todo el espacio restante
           backgroundColor: isDarkMode ? 'var(--background-color, #0f172a)' : 'var(--background-color, #ffffff)',
-          height: '100%',
           position: 'relative',
+          overflow: 'hidden', // Sin scroll
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         {/* Decorative blobs */}
@@ -131,85 +206,59 @@ export const SideBar = ({ drawerWidth = 340, mobileOpen = false, handleDrawerTog
           }}
         />
 
-        <Box sx={{ padding: '1rem' }}>
-          <Box sx={{ display: 'flex', gap: 1, marginBottom: 2 }}>
-            <button
-              onClick={() => {
-                setSearchDate('');
-                setSortNewestFirst(true);
-              }}
-              style={{
-                fontFamily: 'Quicksand',
-                background: '#ec4899',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                border: 'none',
-                cursor: 'pointer',
-                transition: '0.3s',
-              }}
-            >
-              🔄 Restablecer
-            </button>
-
-            <input
-              type="date"
-              value={searchDate}
-              onChange={(e) => setSearchDate(e.target.value)}
-              style={{
-                fontFamily: 'Quicksand',
-                padding: '0.5rem',
-                borderRadius: '0.5rem',
-                border: '1px solid #ccc',
-                background: isDarkMode ? '#1e293b' : '#fff',
-                color: isDarkMode ? '#f8fafc' : '#0f172a',
-                flex: 1,
-              }}
-            />
-            <button
-              onClick={() => setSortNewestFirst(!sortNewestFirst)}
-              style={{
-                fontFamily: 'Quicksand',
-                background: '#8b5cf6',
-                color: 'white',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                border: 'none',
-                cursor: 'pointer',
-                transition: '0.3s',
-              }}
-            >
-              {sortNewestFirst ? '🔽 Nuevos' : '🔼 Antiguos'}
-            </button>
-          </Box>
-
-          <List>
-            {filteredNotes.map((note) => (
+        <Box sx={{ 
+          padding: '0.5rem', 
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <List sx={{ 
+            flex: 1,
+            overflow: 'hidden', // Sin scroll
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 0.5,
+          }}>
+            {filteredNotes.slice(0, 8).map((note) => ( // Limitar a 8 notas máximo
               <SideBarItem
                 key={note.id}
                 {...note}
                 sx={{
                   '&:hover': {
-                    transform: 'translateY(-3px)',
+                    transform: 'translateY(-2px)',
                     boxShadow:
-                      '0 10px 25px -5px rgba(139, 92, 246, 0.2), 0 8px 10px -6px rgba(236, 72, 153, 0.1)',
+                      '0 8px 20px -5px rgba(139, 92, 246, 0.2), 0 6px 8px -6px rgba(236, 72, 153, 0.1)',
                   },
                   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                   borderRadius: '0.75rem',
                   overflow: 'hidden',
-                  marginBottom: '0.75rem',
                   position: 'relative',
                   zIndex: 2,
+                  minHeight: 'auto', // Se ajusta al contenido
                 }}
                 className="box-shadow"
               />
             ))}
           </List>
+          
+          {filteredNotes.length > 8 && (
+            <Typography 
+              variant="caption" 
+              sx={{ 
+                textAlign: 'center', 
+                opacity: 0.7, 
+                mt: 1,
+                fontSize: '0.7rem'
+              }}
+            >
+              +{filteredNotes.length - 8} notas más
+            </Typography>
+          )}
         </Box>
-
       </Box>
-    </>
-  )
+    </Box>
+  );
+
   return (
     <Box
       component="nav"
